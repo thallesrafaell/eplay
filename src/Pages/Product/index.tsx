@@ -1,12 +1,9 @@
 import { useParams } from 'react-router-dom'
+import Hero from '../../components/Hero'
 
 const Product = () => {
   const { id } = useParams()
 
-  return (
-    <div>
-      <p>PRODUTOS {id}</p>
-    </div>
-  )
+  return <Hero />
 }
 export default Product

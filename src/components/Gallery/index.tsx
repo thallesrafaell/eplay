@@ -1,5 +1,7 @@
-import Section from '../Section'
+import { useState } from 'react'
 
+import Section from '../Section'
+import { GAlleryItem } from '../../Pages/Home'
 import { Action, Item, Items, Modal, ModalContent } from './styles'
 
 import imagem from '../../assets/images/diablo.png'
@@ -7,12 +9,6 @@ import hogwarts from '../../assets/images/hogwarts.png'
 import zoom from '../../assets/images/zoom.png'
 import play from '../../assets/images/play.png'
 import close from '../../assets/images/close.png'
-import { useState } from 'react'
-
-interface GAlleryItem {
-  type: 'image' | 'video'
-  url: string
-}
 
 const mock: GAlleryItem[] = [
   {

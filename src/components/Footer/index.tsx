@@ -1,4 +1,5 @@
 import { Container, FooterSection, Link, Links, SectionTitle } from './styles'
+
 const currentYear = new Date().getFullYear()
 const Footer = () => (
   <Container>

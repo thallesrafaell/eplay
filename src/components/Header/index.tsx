@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
+
 import { HeaderBar, LinkCart, Links, LinksItem } from './styles'
 import logo from '../../assets/images/logo.svg'
 import cart from '../../assets/images/cart.svg'
-import { Link } from 'react-router-dom'
 
 const Header = () => (
   <HeaderBar>

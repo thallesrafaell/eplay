@@ -38,8 +38,6 @@ interface ModalState extends GAlleryItem {
 }
 
 const GAllery = ({ defaultCover, name }: Props) => {
-  const [modalAberto, setModalAberto] = useState(false)
-  const [modalUrl, setModalUrl] = useState('')
   const [modal, setModal] = useState<ModalState>({
     IsVisible: false,
     type: 'image',
@@ -57,7 +55,6 @@ const GAllery = ({ defaultCover, name }: Props) => {
   }
 
   const closeModal = () => {
-    setModalAberto(false)
     setModal({
       IsVisible: false,
       type: 'image',
@@ -78,8 +75,6 @@ const GAllery = ({ defaultCover, name }: Props) => {
                   type: media.type,
                   url: media.url
                 })
-                setModalAberto(true)
-                setModalUrl(media.url)
               }}
             >
               <img

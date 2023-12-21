@@ -12,41 +12,51 @@ import {
 } from './styles'
 import Tag from '../Tag'
 import { RootReducer } from '../../store'
-import { close } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
+import { formatPrice } from '../ProductsList'
 
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
 
   const closeCart = () => dispatch(close())
+
+  const totalPrice = () => {
+    return items.reduce((acumulador, valorAtua) => {
+      return (acumulador += valorAtua.prices.current!)
+    }, 0)
+  }
+
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
 
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <SideBAr>
         <ul>
-          <CartItem>
-            <img src={star} alt="" />
-            <div>
-              <h3>Nome do Jogo</h3>
-              <Tag>Rpg</Tag>
-              <Tag>PS5</Tag>
-              <span>R$ 150,00</span>
-            </div>
-            <button type="button" className=".button"></button>
-          </CartItem>
-          <CartItem>
-            <img src={star} alt="" />
-            <div>
-              <h3>Nome do Jogo</h3>
-              <Tag>Rpg</Tag>
-              <Tag>PS5</Tag>
-              <span>R$ 150,00</span>
-            </div>
-          </CartItem>
-          <Quantity>2 jogo(s) no carrinho</Quantity>
+          {items.map((item) => (
+            <CartItem key={item.id}>
+              <img src={item.media.thumbnail} alt={item.name} />
+              <div>
+                <h3>{item.name}</h3>
+                <Tag>{item.details.category}</Tag>
+                <Tag>{item.details.system}</Tag>
+                <span>{formatPrice(item.prices.current)}</span>
+              </div>
+              <button
+                type="button"
+                className=".button"
+                onClick={() => removeItem(item.id)}
+              ></button>
+            </CartItem>
+          ))}
+
+          <Quantity>{items.length} jogo(s) no carrinho</Quantity>
           <Prices>
-            Total de R$250,00 <span>Em até 6x sem juros</span>
+            Total de {formatPrice(totalPrice())}
+            <span>Em até 6x sem juros</span>
           </Prices>
           <Button title="Clique aqui pra prosseguir com a compra" type="button">
             Continuar com a compra

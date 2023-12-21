@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import Button from '../Button'
-import star from '../../assets/images/jedi.png'
+
 import {
   Overlay,
   CartContainer,
@@ -23,6 +23,7 @@ const Cart = () => {
 
   const totalPrice = () => {
     return items.reduce((acumulador, valorAtua) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return (acumulador += valorAtua.prices.current!)
     }, 0)
   }

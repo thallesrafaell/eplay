@@ -1,36 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Banner from '../../components/Banner'
 import ProductList from '../../components/ProductsList'
 
 import { useGetOnsaleQuery, useGetSoonQuery } from '../../services/api'
-
-export interface GAlleryItem {
-  type: 'image' | 'video'
-  url: string
-}
-
-export type Game = {
-  id: number
-  name: string
-  release_date?: string
-  description: string
-  prices: {
-    discount?: number
-    old?: number
-    current?: number
-  }
-  details: {
-    category: string
-    system: string
-    developer: string
-    publisher: string
-    languages: string[]
-  }
-  media: {
-    thumbnail: string
-    cover: string
-    gallery: GAlleryItem[]
-  }
-}
 
 const Home = () => {
   const { data: onSaleGames, isLoading: isLoadingSale } = useGetOnsaleQuery()

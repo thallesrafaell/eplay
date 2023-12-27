@@ -23,6 +23,7 @@ export const Row = styled.div<RowProps>`
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
   max-width: ${(props) => props.maxwidth || 'auto'};
+
   label {
     font-size: 14px;
     margin-bottom: 8px;
@@ -36,6 +37,10 @@ export const InputGroup = styled.div<InputGroupProps>`
     padding: 0 8px;
     border: 1px solid ${colors.white};
     width: 100%;
+
+    &.error {
+      border: 1px solid red;
+    }
   }
 `
 

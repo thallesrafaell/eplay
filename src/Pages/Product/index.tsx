@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
+
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
-
 import GAllery from '../../components/Gallery'
 
 import { useGetGAmeQuery } from '../../services/api'

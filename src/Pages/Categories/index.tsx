@@ -1,4 +1,5 @@
 import ProductList from '../../components/ProductsList'
+
 import {
   useGetActionGamesQuery,
   useGetSportGamesQuery,

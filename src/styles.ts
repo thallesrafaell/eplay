@@ -5,12 +5,12 @@ export const breakPoints = {
   tablet: '768px'
 }
 
-export const cores = {
-  branca: '#EEEEEE',
-  preta: '#111111',
-  cinza: '#333333',
-  cinzaClaro: '#A3A3A3',
-  verde: '#10AC84'
+export const colors = {
+  white: '#EEEEEE',
+  black: '#111111',
+  gray: '#333333',
+  lightGray: '#A3A3A3',
+  green: '#10AC84'
 }
 
 export const GlobalCSS = createGlobalStyle`
@@ -23,8 +23,8 @@ export const GlobalCSS = createGlobalStyle`
 }
 
 body {
-  background-color: ${cores.preta};
-  color: ${cores.branca};
+  background-color: ${colors.black};
+  color: ${colors.white};
   padding-top: 40px;
 }
 

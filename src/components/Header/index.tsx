@@ -1,21 +1,14 @@
 import { Link } from 'react-router-dom'
 import { open } from '../../store/reducers/cart'
 
-import {
-  CartButton,
-  Hamburguer,
-  HeaderBar,
-  HeaderRow,
-  Links,
-  LinksItem,
-  NavMobile
-} from './styles'
+import * as S from './styles'
 import logo from '../../assets/images/logo.svg'
 import cart from '../../assets/images/cart.svg'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
 import { useState } from 'react'
+import { HashLink } from 'react-router-hash-link'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,50 +19,83 @@ const Header = () => {
     dispatch(open())
   }
   return (
-    <HeaderBar>
-      <HeaderRow>
+    <S.HeaderBar>
+      <S.HeaderRow>
         <div>
-          <Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span />
             <span />
             <span />
-          </Hamburguer>
+          </S.Hamburguer>
           <Link to="/">
             <img src={logo} alt="EPLAY" />
           </Link>
           <nav>
-            <Links>
-              <LinksItem>
-                <Link to="/categorias">Categorias</Link>
-              </LinksItem>
-              <LinksItem>
-                <a href="">Novidades</a>
-              </LinksItem>
-              <LinksItem>
-                <a href="">Promoções</a>
-              </LinksItem>
-            </Links>
+            <S.Links>
+              <S.LinksItem>
+                <Link
+                  to="/categorias"
+                  title="Clique aqui para acessar a página de Categorias"
+                >
+                  Categorias
+                </Link>
+              </S.LinksItem>
+              <S.LinksItem>
+                <HashLink
+                  to="/#coming-soon"
+                  title="Clique aqui para acessar a sessão de Em Breve"
+                >
+                  Em breve
+                </HashLink>
+              </S.LinksItem>
+              <S.LinksItem>
+                <HashLink
+                  to="/#on-sale"
+                  title="Clique aqui para acessar a sessão de Promoções"
+                >
+                  Promoções
+                </HashLink>
+              </S.LinksItem>
+            </S.Links>
           </nav>
         </div>
-        <CartButton onClick={openCArt}>
+        <S.CartButton onClick={openCArt}>
           {items.length} <span>- produto(s)</span>
           <img src={cart} alt="carrinho" />
-        </CartButton>
-      </HeaderRow>
-      <NavMobile className={isMenuOpen ? 'is-open' : ''}>
-        <Links>
-          <LinksItem>
-            <Link to="/categorias">Categorias</Link>
-          </LinksItem>
-          <LinksItem>
-            <a href="">Novidades</a>
-          </LinksItem>
-          <LinksItem>
-            <a href="">Promoções</a>
-          </LinksItem>
-        </Links>
-      </NavMobile>
-    </HeaderBar>
+        </S.CartButton>
+      </S.HeaderRow>
+      <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
+        <S.Links>
+          <S.LinksItem>
+            <Link
+              to="/categorias"
+              title="Clique aqui para acessar a página de Categorias"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Categorias
+            </Link>
+          </S.LinksItem>
+          <S.LinksItem>
+            <HashLink
+              to="/#coming-soon"
+              title="Clique aqui para acessar a sessão de Em Breve"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Em breve
+            </HashLink>
+          </S.LinksItem>
+          <S.LinksItem>
+            <HashLink
+              to="/#on-sale"
+              title="Clique aqui para acessar a sessão de Promoções"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Promoções
+            </HashLink>
+          </S.LinksItem>
+        </S.Links>
+      </S.NavMobile>
+    </S.HeaderBar>
   )
 }
 export default Header

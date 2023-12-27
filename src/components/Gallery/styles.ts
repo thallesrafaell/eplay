@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
@@ -23,8 +23,9 @@ export const Action = styled.div`
 
 export const Item = styled.li`
   position: relative;
+  cursor: zoom-in;
   > img {
-    border: 2px solid ${cores.branca};
+    border: 2px solid ${colors.white};
     border-radius: 8px;
     height: 150px;
     width: 150px;
@@ -51,7 +52,7 @@ export const Modal = styled.div`
   align-items: center;
   justify-content: center;
 
-  &.visivel {
+  &.is-visible {
     display: flex;
   }
 

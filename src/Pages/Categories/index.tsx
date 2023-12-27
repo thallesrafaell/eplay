@@ -1,3 +1,4 @@
+import Loader from '../../components/Loader'
 import ProductList from '../../components/ProductsList'
 
 import {
@@ -9,11 +10,15 @@ import {
 } from '../../services/api'
 
 const Categories = () => {
-  const { data: actionGames } = useGetActionGamesQuery()
-  const { data: sportGames } = useGetSportGamesQuery()
-  const { data: simulationGames } = useGetSimulationGamesQuery()
-  const { data: fightGAmes } = useGetFightGamesQuery()
-  const { data: rpgGAmes } = useGetRpgGamesQuery()
+  const { data: actionGames, isLoading: isLoadinAction } =
+    useGetActionGamesQuery()
+  const { data: sportGames, isLoading: isLoadingSports } =
+    useGetSportGamesQuery()
+  const { data: simulationGames, isLoading: isLoadingSimulation } =
+    useGetSimulationGamesQuery()
+  const { data: fightGAmes, isLoading: isLoadingFight } =
+    useGetFightGamesQuery()
+  const { data: rpgGAmes, isLoading: isLoadingRpg } = useGetRpgGamesQuery()
 
   if (actionGames && sportGames && simulationGames && fightGAmes && rpgGAmes) {
     return (
@@ -23,29 +28,39 @@ const Categories = () => {
           games={actionGames}
           title="Ação"
           background="black"
+          isLoading={isLoadinAction}
         />
         <ProductList
           id="sports"
           games={sportGames}
           title="Esporte"
           background="gray"
+          isLoading={isLoadingSports}
         />
         <ProductList
           id="fight"
           games={fightGAmes}
           title="Luta"
           background="black"
+          isLoading={isLoadingFight}
         />
-        <ProductList id="rpg" games={rpgGAmes} title="RPG" background="gray" />
+        <ProductList
+          id="rpg"
+          games={rpgGAmes}
+          title="RPG"
+          background="gray"
+          isLoading={isLoadingRpg}
+        />
         <ProductList
           id="simulation"
           games={simulationGames}
           title="Simulção"
           background="black"
+          isLoading={isLoadingSimulation}
         />
       </>
     )
   }
-  return <h4>Carregando...</h4>
+  return <Loader />
 }
 export default Categories

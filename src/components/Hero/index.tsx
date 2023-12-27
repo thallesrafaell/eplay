@@ -42,7 +42,7 @@ const Hero = ({ game }: Props) => {
               type="button"
               title="Clique para adicionar ao carrinho"
               variant="primary"
-              onclick={addToCart}
+              onClick={addToCart}
             >
               Adicionar ao Carrinho
             </Button>
